@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.json({
     status: 'success',
-    message: 'Welcome to our Book-lending app.',
+    message: 'Welcome to our App.',
     });
 });
 
