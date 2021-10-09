@@ -15,7 +15,7 @@ const dbConnection = {
                 // On success
                 console.log('Database connected successfully')
 
-            await mongoose.disconnect();
+            // await mongoose.disconnect();
         } catch(err) {
             console.error(err.message);
             process.exit(1);
