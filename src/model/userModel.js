@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
 
 const { Schema, model } = mongoose;
 const { isEmail } = validator;
@@ -39,7 +40,7 @@ const userSchema = new Schema(
     },
     imgurl: String,
     resetPasswordToken: String,
-    resetPasswordExipre: Date,
+    resetPasswordExpire: Date,
   },
   { timestamps: true }
 );
@@ -62,6 +63,19 @@ userSchema.methods.getSignedToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   });
+};
+
+userSchema.methods.getResetPasswordToken = function () {
+  const resetToken = crypto.randomBytes(20).toString("hex");
+
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  this.resetPasswordExpire = Date.now() + 10 * (60 * 1000);
+
+  return resetToken;
 };
 
 export const User = model("user", userSchema);
