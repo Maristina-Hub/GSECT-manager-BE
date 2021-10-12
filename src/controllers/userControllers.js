@@ -1,5 +1,5 @@
 import { User } from "../model/userModel.js";
-import { ErrorResponse } from "../utils/ErrorResponse.js";
+import ErrorResponse from "../utils/ErrorResponse.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto";
 
@@ -7,6 +7,11 @@ export const register = async (req, res, next) => {
   const { email, name, password } = req.body;
 
   try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return next(new ErrorResponse("User already exist", 400));
+    }
+
     const user = await User.create({
       name,
       email,
