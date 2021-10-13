@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
 // ======= CONFIGURING MONGO MEMORY SERVER ========
-const mongoServer = new MongoMemoryServer();
+const mongoServer = new MongoMemoryServer()
 
 // Connect to db
 export const connect = async () => {
-const URI = await mongoServer.getUri();
+const URI = await mongoServer.getUri()
 
 await mongoose.connect(URI, {
     useNewUrlParser: true,
