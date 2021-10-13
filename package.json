@@ -9,14 +9,15 @@
   "scripts": {
     "test": "jest --testEnvironment=node --runInBand ./__test__",
     "test:watch": "jest --watch",
-    "dev": "nodemon ./src"
+    "dev": "nodemon ./src",
+    "start": "NODE_ENV=production node ./src"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Maristina-Hub/GSECT-manager-BE.git"
   },
   "keywords": [],
-  "author": "Grouo 2",
+  "author": "Group 2",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Maristina-Hub/GSECT-manager-BE/issues"
