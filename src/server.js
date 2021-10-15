@@ -23,4 +23,4 @@ app.use("/api/users", userRoutes);
 // app.use(router);
 app.use(errorHandler);
 
-export default app;
+export default app
