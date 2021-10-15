@@ -12,11 +12,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Just for testing
-app.get("/", (req, res) => {
-  res.json({
-    status: "success",
-    message: "Welcome to our App.",
-  });
+app.get('/', (req, res) => {
+    res.json({
+    status: 'success',
+    message: 'Welcome to our GSECT-MAMAGER App.',
+    });
 });
 
 app.use("/api/users", userRoutes);
