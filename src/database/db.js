@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
-//const uri = 'mongodb+srv://test:test@123@cluster0.w8yce.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const uri = process.env.MONGODB_URI;
 
 export const connectDB = async () => {
-  await mongoose.connect(process.env.MONGODB_URI, {
+  await mongoose.connect(uri, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
