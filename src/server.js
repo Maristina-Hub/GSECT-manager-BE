@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 // import router from "./routes/router.js";
 import userRoutes from "./routes/userRoutes.js";
+import privateRoute from "./routes/privateRoute.js";
 import { errorHandler } from "./middleware/error.js";
 
 const app = express();
@@ -20,6 +21,9 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
+
+//Checking out Protected route for only auth users
+app.use("/api/private", privateRoute);
 
 // app.use(router);
 app.use(errorHandler);
