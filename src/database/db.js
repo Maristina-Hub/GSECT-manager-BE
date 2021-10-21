@@ -10,7 +10,7 @@ export const connectDB = async () => {
     useFindAndModify: true,
   });
 
-  console.log("MongoDB connected");
+  console.log("Database connected succesfully");
 };
 
 // module.exports = connectDB;
