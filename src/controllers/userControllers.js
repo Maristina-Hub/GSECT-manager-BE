@@ -19,35 +19,6 @@ export const register = async (req, res, next) => {
       email,
       password,
     })
-    // const admin = new User(makeInstance(user._id));
-    // const newAdmin = await admin.save();
-
-      // Prevents password from being visible
-      // delete user._doc.password;
-      // delete newAdmin._doc.password;
-      
-      // if(!Object.keys(newAdmin).length) {
-      //   return res.status(500).json({ status: "Failed", message: "Server error" });
-      // }
-
-      // return jwt.sign(
-      //   { id: newAdmin._id },
-      //   process.env.JWT_SECRET,
-      //   { expiresIn: 1000 },
-      //   (err, token) => {
-      //     if(err) throw err;
-
-      //     res.status(200).json({
-      //       status: 'success',
-      //       data: {
-      //         id: newAdmin._id,
-      //         admin: `${user.name}}`,
-      //         token: "Bearer " + token
-      //       },
-      //       message: 'Admin account created successfully'
-      //     });
-      //   }
-      // );
       sendToken(user, 201, res);
     console.log(user)
   } catch(error) {
