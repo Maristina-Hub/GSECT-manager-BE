@@ -10,7 +10,7 @@ export const connectDB = async () => {
     useFindAndModify: true,
   });
 
-  console.log("Database connected succesfully");
+  console.log("Database connected successfully.");
 };
 
-// module.exports = connectDB;
+

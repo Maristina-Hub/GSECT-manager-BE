@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use("/api/users", router);
+app.use("api/users", userRoutes);
 
 //Checking out Protected route for only auth users
 app.use("/api/private", privateRoute);
