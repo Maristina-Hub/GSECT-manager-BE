@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
-// import router from "./routes/router.js";
-import router from "./routes/router.js";
+import userRoutes from "./routes/userRoutes.js";
 import privateRoute from "./routes/privateRoute.js";
 import { errorHandler } from "./middleware/error.js";
 
