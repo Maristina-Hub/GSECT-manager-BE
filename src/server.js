@@ -13,10 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Just for testing
 app.get('/', (req, res) => {
-    res.json({
-    status: 'success',
-    message: 'Welcome to our GSECT-MAMAGER App.',
-    });
+    res.json(
+    'Welcome to our GSECT-MAMAGER App.'
+    );
 });
 
 app.use("/api/users", userRoutes);
