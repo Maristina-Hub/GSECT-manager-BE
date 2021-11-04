@@ -5,36 +5,66 @@ const { Schema, model } = mongoose;
 
 const subscriptionSchema = new Schema(
     {
-    subscriptionType: {
+    category:{
+            type: 'string',
+           required: [true, "please enter a subscription category"],
+    },
+
+    subPlan: {
         type: String,
         enum: ['type1', 
                'type2', 
                'type3',
                'type4'
         ],
-        required: true,
-       
+        required: [true, "please enter a valid subscription period"],
+      
     },
-    subcriptionPeriod: {
-        type: Number,
+    subType: {
+        type: String,
         enum: ['type1', 
                'type2', 
                'type3',
                'type4'
         ],
-        required: true,
-      
+        required: [true, "please enter a valid subscription period"],
+    },
+    autoRenew:{
+        type:Boolean,
+        required: [true, "please enter a auto renewal status"],
+
     },
     status: {
         type: String,
-        required: true,
+        enum: ['active', 'inactive'],
+        required: [true, "please enter a valid status"],
         
     },
     price: {
         type: Number,
-        required: true,
+        required: [true, "please enter a valid price"],
+    }, 
+    nextBill: {
+        type: Date,
+        required: [true, "Please enter a billing date."],
+    },
+    billingCycle:{
+        type: Number,
+        required: [true, "Please enter a billing cycle."],
+    },
+    remindMe:{
+        type:Boolean,
+        defualt: false,
+    },
+    remindMeDate:{
+        type: Date,
+        default:this.nextBill,
+    },
+    endDate: {
+        type: Date,
+        required: [true, "Please enter a valid end time"],
     }
     }, { timestamps: true }
     )
 
-export const Subscription = model('book', subscriptionSchema);
+export const Subscription = model('subscription', subscriptionSchema);
