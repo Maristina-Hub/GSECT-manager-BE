@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
 
-const { Schema, model } = mongoose;
+const { Schema, model, SchemaTypes } = mongoose;
 
 
 const subscriptionSchema = new Schema(
     {
     category:{
-            type: 'string',
-           required: [true, "please enter a subscription category"],
+            type: SchemaTypes.ObjectId,
+            ref: 'category',
+            required: [true, "please enter a subscription category"],
     },
 
     subPlan: {
@@ -22,10 +23,11 @@ const subscriptionSchema = new Schema(
     },
     subType: {
         type: String,
-        enum: ['type1', 
-               'type2', 
-               'type3',
-               'type4'
+        enum: ['daily', 
+               'weekly', 
+               'monthly',
+               'quarterly',
+               'yearly'
         ],
         required: [true, "please enter a valid subscription period"],
     },

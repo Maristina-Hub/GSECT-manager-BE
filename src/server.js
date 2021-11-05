@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 // Just for testing
 app.get('/', (req, res) => {
     res.json(
-    'Welcome to our GSECT-MAMAGER App.'
+    'Welcome to our GSECT-MANAGER App.'
     );
 });
 
