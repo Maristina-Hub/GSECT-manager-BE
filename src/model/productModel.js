@@ -3,13 +3,13 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const productSchema = new Schema({
-  name: {
+  productName: {
     type: String,
     required: [true, "Please Enter Product Name"],
     trim: true,
   },
   image: { type: String },
-  subscriptionType: {
+  subscriptionPlan: {
     type: String,
     required: [true, "Please choose a subscription type"],
     default: "monthly",
@@ -22,9 +22,13 @@ const productSchema = new Schema({
     type: String,
     required: [true, "Please Enter Product Category"],
   },
-  dueAt: {
-    type: Date,
-    default: null,
+  billingCycle: {
+    type: Number,
+    required: [true, "Please enter a billing cycle."],
+  },
+  remindMe: {
+    type: Boolean,
+    default: false,
   },
 });
 
