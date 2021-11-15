@@ -52,6 +52,7 @@ export const subscriptionController = {
       autoRenew,
       status,
       price,
+      nextBill,
       billingCycle,
       remindMe,
     } = req.body;
@@ -64,6 +65,7 @@ export const subscriptionController = {
         !autoRenew ||
         !status ||
         !price ||
+        !nextBill ||
         !billingCycle ||
         !remindMe
       ) {
@@ -150,7 +152,7 @@ export const subscriptionController = {
     const { id } = req.params;
 
     try {
-      const savedSubscriptionk = await Product.findByIdAndRemove(id);
+      const savedSubscriptionk = await Subscription.findByIdAndRemove(id);
 
       return res.status(200).json({ message: "Subscription deleted" });
     } catch (error) {

@@ -58,7 +58,7 @@ const subscriptionSchema = new Schema(
     },
     remindMeDate: {
       type: Date,
-      default: this.nextBill,
+      // default: this.nextBill,
     },
     endDate: {
       type: Date,
