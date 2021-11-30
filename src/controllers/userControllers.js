@@ -19,7 +19,6 @@ export const register = async (req, res, next) => {
       password,
     });
     sendToken(user, 201, res);
-    console.log(user);
   } catch (error) {
     return res.status(500).json({
       status: "Failed",
@@ -212,5 +211,12 @@ export const deleteUser = async (req, res) => {
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();
-  res.status(statusCode).json({ success: true, token });
+  res.status(statusCode).json({
+    success: true,
+    token,
+    name: user.name,
+    role: user.role,
+    id: user._id,
+    email: user.email,
+  });
 };

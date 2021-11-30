@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 
 import { errorHandler } from "./middleware/error.js";
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", userRoutes);
 app.use("/", subscriptionRoutes);
+app.use("/", productRoutes);
 
 // app.use(router);
 app.use(errorHandler);
