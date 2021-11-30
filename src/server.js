@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
-// import router from "./routes/router.js";
 import userRoutes from "./routes/userRoutes.js";
-import privateRoute from "./routes/privateRoute.js";
+import subscriptionRoutes from "./routes/subscriptionRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
+
 import { errorHandler } from "./middleware/error.js";
 
 const app = express();
@@ -12,17 +13,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Just for testing
-app.get('/', (req, res) => {
-    res.json({
-    status: 'success',
-    message: 'Welcome to our GSECT-MAMAGER App.',
-    });
-});
+// app.get("/", (req, res) => {
+//   res.json("Welcome to our GSECT-MANAGER App.");
+// });
 
-app.use("n/api/users", userRoutes);
-
-//Checking out Protected route for only auth users
-app.use("/api/private", privateRoute);
+app.use("/", userRoutes);
+app.use("/", subscriptionRoutes);
+app.use("/", productRoutes);
 
 // app.use(router);
 app.use(errorHandler);

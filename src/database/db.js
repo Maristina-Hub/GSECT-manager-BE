@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 
-
-
 export const connectDB = async () => {
-  await mongoose.connect(process.env.MONGO_URI, {
+  await mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -12,5 +10,3 @@ export const connectDB = async () => {
 
   console.log("Database connected successfully.");
 };
-
-
