@@ -33,7 +33,12 @@ const userSchema = new Schema(
       enum: ["admin", "normal"],
       default: "normal",
     },
-    imgurl: String,
+    subscriptionType: {
+      type: String,
+      enum: ["regular", "premium", "platinum"],
+      default: "regular",
+    },
+    imgUrl: String,
     resetPasswordToken: String,
     resetPasswordExpire: Date,
   },
@@ -55,9 +60,13 @@ userSchema.methods.matchPasswords = async function (password) {
 };
 
 userSchema.methods.getSignedToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
+  return jwt.sign(
+    { id: this._id, name: this.name, role: this.role },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_EXPIRE,
+    }
+  );
 };
 
 userSchema.methods.getResetPasswordToken = function () {

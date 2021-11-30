@@ -13,3 +13,5 @@ EMAIL_PASSWORD=
 EMAIL_FROM=
 
 # In the root directory, run "npm run dev" to start the devlopment server
+
+https://gsect-manager.herokuapp.com/
